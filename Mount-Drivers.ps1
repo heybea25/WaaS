@@ -7,7 +7,7 @@ try {
     $driversContentPath = "$env:ProgramData\$companyName\WaaS\$waasVersion\Drivers"
     $computerModel = (Get-CimInstance Win32_ComputerSystemProduct).Version
     if (-NOT[string]::IsNullOrEmpty($computerModel)) {
-        $compuderModel = (Get-WmiObject -Class Win32_ComputerSystem).Model  
+        $computerModel = (Get-WmiObject -Class Win32_ComputerSystem).Model  
     }
     $findDrivers = (Get-ChildItem -Path $driversContentPath -Recurse | Where-Object {$_.FullName -match $computerModel}).FullName
     if (-NOT[string]::IsNullOrEmpty($findDrivers)) {
